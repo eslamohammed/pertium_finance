@@ -34,9 +34,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // body: Center(
-
-      // ),
        appBar:  AppBar(
         toolbarHeight: 65,
         title:Row(
