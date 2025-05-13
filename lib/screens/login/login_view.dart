@@ -17,10 +17,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  // bool _isSigning = false;
-
-  // final FirebaseAuthService _auth = FirebaseAuthService();
-
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -45,7 +41,7 @@ class _LoginPageState extends State<LoginPage> {
                 style: Theme.of(context)
                     .textTheme
                     .displayLarge
-                    ?.copyWith(color: ColorManager.darkBlue),
+                    ?.copyWith(color: ColorManager.primary),
               ),
               const SizedBox(
                 height: 30,
@@ -107,7 +103,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   GestureDetector(
                         onTap: () async {
-                          // Navigator.of(context).pushReplacementNamed(Routes.mainScreen);
+                          Navigator.of(context).pushReplacementNamed(Routes.homeScreen);
                       },
                       child: Text(
                         "Lets go! 🕵️",

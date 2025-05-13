@@ -4,11 +4,12 @@ import 'package:pretium_finance/screens/login/login_view.dart';
 import 'package:pretium_finance/screens/onboarding/OnBoardingView.dart';
 import 'package:pretium_finance/screens/register/register_view.dart';
 import 'package:pretium_finance/screens/splash/splash_view.dart';
+import '../screens/home/home_screen.dart';
 import 'color_manager.dart';
 
 class Routes {
   static const String splashRoute = "/";
-  static const String homeRoute = "/main";
+  static const String homeScreen = "/main";
   static const String detailsRoute = "/details";
   static const String onBoardingRoute = "/onBoarding";
   static const String registerRoute = "/register";
@@ -24,17 +25,12 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const SplashView());
       case Routes.onBoardingRoute:
         return MaterialPageRoute(builder: (_) => const OnBoardingView());
-        case Routes.loginRoute:
+      case Routes.loginRoute:
         return MaterialPageRoute(builder: (_) => const LoginPage());
       case Routes.registerRoute:
         return MaterialPageRoute(builder: (_) => const SignUpPage());
-      // case Routes.homeRoute:
-      //   return MaterialPageRoute(builder: (_) => const ProductListScreen());
-      // case Routes.detailsRoute:
-      //   final product = settings.arguments as Product;
-      //   return MaterialPageRoute(
-      //     builder: (_) => ProductDetailScreen(product: product),
-      //   );
+      case Routes.homeScreen:
+        return MaterialPageRoute(builder: (_) => const HomeScreen());
       default:
         return unDefinedRoute();
     }

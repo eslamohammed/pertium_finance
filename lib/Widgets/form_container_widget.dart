@@ -51,11 +51,11 @@ class _FormContainerWidgetState extends State<FormContainerWidget> {
           prefixIcon: widget.isPasswordField == true
               ? Icon(
                   Icons.password,
-                  color: ColorManager.lightGrey,
+                  color: ColorManager.secondary,
                 )
               : Icon(
                   Icons.email,
-                  color: ColorManager.lightGrey,
+                  color: ColorManager.secondary,
                 ),
           suffixIcon: GestureDetector(
             onTap: () {
@@ -68,7 +68,7 @@ class _FormContainerWidgetState extends State<FormContainerWidget> {
                     _obscureText ? Icons.visibility_off : Icons.visibility,
                     color: _obscureText == false
                         ? ColorManager.primary
-                        : ColorManager.darkBlue,
+                        : ColorManager.secondary,
                   )
                 : const Text(""),
           ),
