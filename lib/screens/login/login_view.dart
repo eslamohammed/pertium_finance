@@ -66,6 +66,7 @@ class _LoginPageState extends State<LoginPage> {
                 label: AppStrings.login,
                 onClick: () {
                   showToast("Coming Soon!");
+                  Navigator.of(context).pushReplacementNamed(Routes.homeScreen);
                 },
               ),
               const SizedBox(
