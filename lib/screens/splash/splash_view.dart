@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:pretium_finance/utils/color_manager.dart';
 
 import '../../utils/assets_manager.dart';
