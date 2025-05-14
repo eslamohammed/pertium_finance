@@ -1,12 +1,8 @@
 
 import 'package:flutter/material.dart';
-import 'package:pretium_finance/Widgets/custom_button.dart';
-import 'package:pretium_finance/utils/app_strings.dart';
-import 'package:pretium_finance/utils/color_manager.dart';
-import 'package:pretium_finance/utils/routes.dart';
-
-import '../../Widgets/ext.dart';
 import '../../Widgets/form_container_widget.dart';
+import '../../utils/color_manager.dart';
+import '../../utils/routes.dart';
 
 
 class LoginPage extends StatefulWidget {
@@ -17,11 +13,18 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+
+  bool _isChecked = false;
+
+  final TextEditingController _firstNameController = TextEditingController();
+  final TextEditingController _lastNameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
   @override
   void dispose() {
+    _firstNameController.dispose();
+    _lastNameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
@@ -30,44 +33,108 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: SingleChildScrollView(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                AppStrings.login,
-                style: Theme.of(context)
-                    .textTheme
-                    .displayLarge
-                    ?.copyWith(color: ColorManager.primary),
+              const SizedBox(height: 60),
+              const Text(
+                'Create Account',
+                style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
               ),
-              const SizedBox(
-                height: 30,
+              const SizedBox(height: 8),
+              const Text(
+                'Simplify your crypto payments with us',
+                style: TextStyle(color: Colors.grey),
               ),
+              const SizedBox(height: 32),
+          
+              // Custom Input Fields
+              FormContainerWidget(
+                controller: _firstNameController,
+                labelText: 'First Name',
+                icon: Icons.person,
+              ),
+              const SizedBox(height: 16),
+          
+              FormContainerWidget(
+                controller: _lastNameController,
+                labelText: 'Last Name',
+                icon: Icons.person_outline,
+              ),
+              const SizedBox(height: 16),
+          
               FormContainerWidget(
                 controller: _emailController,
-                hintText: AppStrings.email,
-                isPasswordField: false,
+                labelText: 'Email',
+                icon: Icons.email,
               ),
-              const SizedBox(
-                height: 10,
-              ),
+              const SizedBox(height: 16),
+          
               FormContainerWidget(
                 controller: _passwordController,
-                hintText: AppStrings.password,
+                labelText: 'Password',
+                icon: Icons.lock,
                 isPasswordField: true,
               ),
-              const SizedBox(
-                height: 30,
-              ),
-              CustomButton(
-                label: AppStrings.login,
-                onClick: () {
-                  showToast("Coming Soon!");
-                  Navigator.of(context).pushReplacementNamed(Routes.homeScreen);
+              const SizedBox(height: 16),
+          
+              // Terms & Conditions
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _isChecked = !_isChecked;
+                  });
                 },
+                child: Row(
+                  children: [
+                    Checkbox(value: _isChecked, onChanged: (value) {
+                       setState(() {
+                        _isChecked = value!;
+                      });
+                    }),
+                    const Text('Accept '),
+                    GestureDetector(
+                      onTap: () {},
+                      child: const Text(
+                        'Terms and Conditions',
+                        style: TextStyle(
+                          color: Color(0xFF14635B),
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
+          
+              // Create Account Button
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF14635B),
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    elevation: 4,
+                  ),
+                  child: const Text(
+                    'Create Account',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
               ),
               const SizedBox(
                 height: 20,
@@ -75,49 +142,28 @@ class _LoginPageState extends State<LoginPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(AppStrings.notMemberSignUp),
+                  const Text("Already have an account?"),
                   const SizedBox(
                     width: 5,
                   ),
                   GestureDetector(
                       onTap: () {
                         Navigator.of(context)
-                            .pushReplacementNamed(Routes.registerRoute);
+                            .pushReplacementNamed(Routes.loginRoute);
                       },
                       child: Text(
-                        AppStrings.signup,
+                        "Login",
                         style: TextStyle(
                             color: ColorManager.primary,
                             fontWeight: FontWeight.bold),
                       ))
                 ],
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text("Soft login"),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  GestureDetector(
-                        onTap: () async {
-                          Navigator.of(context).pushReplacementNamed(Routes.homeScreen);
-                      },
-                      child: Text(
-                        "Lets go! 🕵️",
-                        style: TextStyle(
-                            color: ColorManager.primary,
-                            fontWeight: FontWeight.bold),
-                      ))
-                ],
-              ),            
+              )
             ],
           ),
         ),
       ),
+
     );
   }
 }

@@ -159,7 +159,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               width: double.infinity, // يعرض الزر بعرض الشاشة المتاح
               child: ElevatedButton(
                 onPressed: () {
-                  data.currentIndex == 2 ? 
+                  data.currentIndex == data.pageCount -1 ? 
                   Navigator.of(context)
                         .pushReplacementNamed(Routes.loginRoute)
                   :
@@ -171,14 +171,14 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: ColorManager.darkgreen,
-                  padding: EdgeInsets.symmetric(vertical: 16), // ارتفاع الزر
+                  padding: EdgeInsets.symmetric(vertical: 20),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16), // تدوير الزوايا
+                    borderRadius: BorderRadius.circular(16), 
                   ),
-                  elevation: 4, // الظل أسفل الزر
+                  elevation: 4,
                 ),
                 child: Text(
-                  data.currentIndex == 2 ? 'Get Started':'Next',
+                  data.currentIndex == data.pageCount -1 ? 'Get Started':'Next',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,

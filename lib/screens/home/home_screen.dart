@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pretium_finance/utils/color_manager.dart';
 
-import '../../Widgets/transaction_item.dart';
 import '../../utils/routes.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -12,23 +11,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 
-final List<Map<String, String>> transactions = [
-  {
-    "title": "Mobile",
-    "amount": "KES 500",
-    "datetime": "Jan 03, 07:57",
-  },
-  {
-    "title": "Mobile",
-    "amount": "KES 500",
-    "datetime": "Jan 03, 07:53",
-  },
-  {
-    "title": "Mobile",
-    "amount": "KES 1200",
-    "datetime": "Jan 01, 18:21",
-  },
-];
 
 class _HomeScreenState extends State<HomeScreen> {
   @override

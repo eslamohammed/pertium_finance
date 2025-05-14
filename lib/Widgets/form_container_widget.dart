@@ -12,6 +12,10 @@ class FormContainerWidget extends StatefulWidget {
   final FormFieldValidator<String>? validator;
   final ValueChanged<String>? onFieldSubmitted;
   final TextInputType? inputType;
+  final bool ? obscureText;
+  final IconData icon;
+
+
 
   const FormContainerWidget(
       {super.key,
@@ -24,7 +28,7 @@ class FormContainerWidget extends StatefulWidget {
       this.onSaved,
       this.validator,
       this.onFieldSubmitted,
-      this.inputType});
+      this.inputType, this.obscureText, required this.icon});
 
   @override
   _FormContainerWidgetState createState() => _FormContainerWidgetState();
@@ -35,27 +39,19 @@ class _FormContainerWidgetState extends State<FormContainerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      child: TextFormField(
-        style: Theme.of(context).inputDecorationTheme.hintStyle,
-        controller: widget.controller,
-        keyboardType: widget.inputType,
-        key: widget.fieldKey,
-        obscureText: widget.isPasswordField == true ? _obscureText : false,
-        onSaved: widget.onSaved,
-        validator: widget.validator,
-        onFieldSubmitted: widget.onFieldSubmitted,
-        decoration: InputDecoration(
-          hintText: widget.hintText,
+    return TextField(
+      decoration: InputDecoration(
+        labelText: widget.labelText,
+        hintText: widget.hintText,
           prefixIcon: widget.isPasswordField == true
               ? Icon(
-                  Icons.password,
-                  color: ColorManager.secondary,
+                  Icons.lock,
+                  color: Colors.black,
                 )
-              : Icon(
-                  Icons.email,
-                  color: ColorManager.secondary,
+              :
+                Icon( widget.icon,
+                  color: Colors.black,
+
                 ),
           suffixIcon: GestureDetector(
             onTap: () {
@@ -72,8 +68,15 @@ class _FormContainerWidgetState extends State<FormContainerWidget> {
                   )
                 : const Text(""),
           ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
         ),
       ),
+        style: Theme.of(context).inputDecorationTheme.hintStyle,
+        controller: widget.controller,
+        keyboardType: widget.inputType,
+        key: widget.fieldKey,
+        obscureText: widget.isPasswordField == true ? _obscureText : false,
     );
   }
 }
