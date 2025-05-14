@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pretium_finance/Widgets/ext.dart';
 import 'package:pretium_finance/Widgets/form_container_widget.dart';
-import 'package:pretium_finance/utils/app_strings.dart';
 import 'package:pretium_finance/utils/color_manager.dart';
 
-import '../../Widgets/custom_button.dart';
 import '../../utils/routes.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -70,7 +67,7 @@ class _SignUpPageState extends State<SignUpPage> {
               FormContainerWidget(
                 controller: _emailController,
                 labelText: 'Email',
-                icon: Icons.email,
+                icon: Icons.email_outlined,
               ),
               const SizedBox(height: 16),
           

@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import '../../Widgets/form_container_widget.dart';
+import '../../utils/assets_manager.dart';
 import '../../utils/color_manager.dart';
 import '../../utils/routes.dart';
 
@@ -37,39 +38,36 @@ class _LoginPageState extends State<LoginPage> {
         padding: const EdgeInsets.all(20),
         child: SingleChildScrollView(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(height: 60),
+              const SizedBox(height: 100),
+               Center(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20), // تحكم بحجم الانحناء
+                    child: Image.asset(
+                      AssetsManager.login,
+                      width: 75, 
+                      height: 75  ,
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                ),
+              const SizedBox(height: 8),
               const Text(
-                'Create Account',
+                'Welcome Back!',
                 style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 8),
               const Text(
-                'Simplify your crypto payments with us',
+                'Sign in to continue',
                 style: TextStyle(color: Colors.grey),
               ),
               const SizedBox(height: 32),
           
-              // Custom Input Fields
-              FormContainerWidget(
-                controller: _firstNameController,
-                labelText: 'First Name',
-                icon: Icons.person,
-              ),
-              const SizedBox(height: 16),
-          
-              FormContainerWidget(
-                controller: _lastNameController,
-                labelText: 'Last Name',
-                icon: Icons.person_outline,
-              ),
-              const SizedBox(height: 16),
-          
               FormContainerWidget(
                 controller: _emailController,
                 labelText: 'Email',
-                icon: Icons.email,
+                icon: Icons.email_outlined,
               ),
               const SizedBox(height: 16),
           
@@ -116,7 +114,8 @@ class _LoginPageState extends State<LoginPage> {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-
+                    Navigator.of(context)
+                            .pushReplacementNamed(Routes.homeScreen);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF14635B),
@@ -142,17 +141,17 @@ class _LoginPageState extends State<LoginPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text("Already have an account?"),
+                  const Text("Don't have an account?"),
                   const SizedBox(
                     width: 5,
                   ),
                   GestureDetector(
                       onTap: () {
                         Navigator.of(context)
-                            .pushReplacementNamed(Routes.loginRoute);
+                            .pushReplacementNamed(Routes.registerRoute);
                       },
                       child: Text(
-                        "Login",
+                        "Sign Up",
                         style: TextStyle(
                             color: ColorManager.primary,
                             fontWeight: FontWeight.bold),
