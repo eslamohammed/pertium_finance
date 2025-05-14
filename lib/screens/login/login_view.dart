@@ -126,7 +126,7 @@ class _LoginPageState extends State<LoginPage> {
                     elevation: 4,
                   ),
                   child: const Text(
-                    'Create Account',
+                    'Login',
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w600,
