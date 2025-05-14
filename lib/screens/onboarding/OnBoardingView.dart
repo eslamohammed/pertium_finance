@@ -107,29 +107,31 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   Widget _getBottomSheetWidget(OnboardingSliderViewObject? data) {
     return Container(
       decoration:  BoxDecoration(color: ColorManager.white),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: Column(
+        // crossAxisAlignment: CrossAxisAlignment.,
+        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(
-                vertical: AppPadding.p16, horizontal: AppPadding.p20),
-            child: GestureDetector(
-              onTap: () {
-                pageController.previousPage(
-                    duration: const Duration(
-                        milliseconds: AppConstants.sliderAnimationTime),
-                    curve: Curves.ease);
-              },
-              child: SizedBox(
-                width: AppSize.s20,
-                height: AppSize.s20,
-                child: SvgPicture.asset(
-                  color: ColorManager.secondary,
-                  AssetsManager.leftArrow,
-                ),
-              ),
-            ),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.symmetric(
+          //       vertical: AppPadding.p16, horizontal: AppPadding.p20),
+          //   child: GestureDetector(
+          //     onTap: () {
+          //       pageController.previousPage(
+          //           duration: const Duration(
+          //               milliseconds: AppConstants.sliderAnimationTime),
+          //           curve: Curves.ease);
+          //     },
+          //     child: SizedBox(
+          //       width: AppSize.s20,
+          //       height: AppSize.s20,
+          //       child: SvgPicture.asset(
+          //         color: ColorManager.secondary,
+          //         AssetsManager.leftArrow,
+          //       ),
+          //     ),
+          //   ),
+          // ),
+          
           Row(mainAxisAlignment: MainAxisAlignment.center, children: [
             for (int index = 0; index < data!.pageCount; index++)
               Container(
@@ -153,22 +155,39 @@ class _OnBoardingViewState extends State<OnBoardingView> {
           ]),
           Padding(
             padding: const EdgeInsets.all(AppPadding.p16),
-            child: GestureDetector(
-              onTap: () {
-                pageController.nextPage(
+            child: SizedBox(
+              width: double.infinity, // يعرض الزر بعرض الشاشة المتاح
+              child: ElevatedButton(
+                onPressed: () {
+                  data.currentIndex == 2 ? 
+                  Navigator.of(context)
+                        .pushReplacementNamed(Routes.loginRoute)
+                  :
+                  pageController.nextPage(
                     duration: const Duration(
                         milliseconds: AppConstants.sliderAnimationTime),
                     curve: Curves.ease);
-              },
-              child: SizedBox(
-                width: AppSize.s20,
-                height: AppSize.s20,
-                child: SvgPicture.asset(
-                    color: ColorManager.secondary,
-                    AssetsManager.rightArrow),
+                  
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: ColorManager.darkgreen,
+                  padding: EdgeInsets.symmetric(vertical: 16), // ارتفاع الزر
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16), // تدوير الزوايا
+                  ),
+                  elevation: 4, // الظل أسفل الزر
+                ),
+                child: Text(
+                  data.currentIndex == 2 ? 'Get Started':'Next',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
               ),
             ),
-          ),
+          )
         ],
       ),
     );
