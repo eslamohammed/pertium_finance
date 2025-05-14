@@ -28,23 +28,19 @@ class _SplashViewState extends State<SplashView> with TickerProviderStateMixin {
     var size = MediaQuery.of(context).size;
 
     return Scaffold(
-        backgroundColor: ColorManager.white,
+        backgroundColor: ColorManager.darkgreen,
         body: Center(
           child: AnimatedBuilder(
               animation: _animationController,
               builder: (BuildContext context, Widget? child) {
-                return RotationTransition(
-                  turns:
-                      Tween(begin: 0.0, end: 1.0).animate(_animationController),
-                  child: Image.asset(
-                    AssetsManager.onBoarding1,
-                    width: (size.height > size.width)
-                        ? size.width * 0.4
-                        : size.height * 0.4,
-                    height: (size.height > size.width)
-                        ? size.width * 0.4
-                        : size.height * 0.4,
-                  ),
+                return Image.asset(
+                  AssetsManager.splashScreen,
+                  width: (size.height > size.width)
+                      ? size.width * 0.3 
+                      : size.height * 0.3 ,
+                  height: (size.height > size.width)
+                      ? size.width * 0.3
+                      : size.height * 0.3 ,
                 );
               }),
         ));

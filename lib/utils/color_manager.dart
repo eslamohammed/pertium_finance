@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class ColorManager {
   static Color primary = const Color(0xFF115A60); // Muted orange 0xFF115A60
-  static Color secondary =const Color(0xFF0F655A); // Orange Dark
-  static Color darkBlue = const Color(0xff0F2851);
+  static Color secondary =const Color(0xFF0F655A); // Orange Dark 
+  static Color darkgreen = const Color(0xFF14635B);
   static Color grey = const Color(0xff737477);
 
 // Light Orange with a dusty feel

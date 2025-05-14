@@ -60,6 +60,25 @@ class _OnBoardingViewState extends State<OnBoardingView> {
         systemOverlayStyle: const SystemUiOverlayStyle(
             statusBarColor: ColorManager.water,
             statusBarBrightness: Brightness.light),
+           actions: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: AppPadding.p8),
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.of(context)
+                        .pushReplacementNamed(Routes.loginRoute);
+                  },
+                  child:  Text(
+                    AppStrings.skip,
+                    textAlign: TextAlign.end,
+                    style: buttonText2.copyWith(color: ColorManager.secondary),
+                  ),
+                ),
+              ),
+            ),
+           ],
       ),
       body: PageView.builder(
         controller: pageController,
@@ -78,23 +97,6 @@ class _OnBoardingViewState extends State<OnBoardingView> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AppPadding.p8),
-              child: Align(
-                alignment: Alignment.centerRight,
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.of(context)
-                        .pushReplacementNamed(Routes.loginRoute);
-                  },
-                  child:  Text(
-                    AppStrings.skip,
-                    textAlign: TextAlign.end,
-                    style: buttonText2.copyWith(color: ColorManager.secondary),
-                  ),
-                ),
-              ),
-            ),
             _getBottomSheetWidget(data)
           ],
         ),
@@ -144,7 +146,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                         )
                       : null,
                   color: data.currentIndex == index
-                      ? ColorManager.primary
+                      ? ColorManager.darkgreen
                       : ColorManager.white,
                 ),
               )
@@ -186,6 +188,10 @@ class OnboardingPage extends StatelessWidget {
         const SizedBox(
           height: AppSize.s40,
         ),
+        
+        Image.asset(
+          onboardingSlider.imagePath,
+        ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: AppPadding.p8),
           child: Text(
@@ -196,9 +202,6 @@ class OnboardingPage extends StatelessWidget {
         ),
         const SizedBox(
           height: AppSize.s60,
-        ),
-        Image.asset(
-          onboardingSlider.imagePath,
         ),
         Padding(
           padding: const EdgeInsets.all(AppPadding.p16),
