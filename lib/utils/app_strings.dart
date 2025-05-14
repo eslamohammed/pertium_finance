@@ -1,13 +1,13 @@
 class AppStrings {
   static const noRouteFound = "No Route Found";
-  static const onBoardingHeader1 = "Updated Pretium \nEveryday ";
+  static const onBoardingHeader1 = "Direct Pay ";
   static const onBoardingBody1 =
-      "Don't worry, you won't be\noutdated.";
-  static const onBoardingHeader2 = "Easy Pretium\nAnd Finance";
+      "Pay with crypto across Africa effortlessly.";
+  static const onBoardingHeader2 = "Accept Payments";
   static const onBoardingBody2 =
-      "Your package will come right to you ASAP!";
-  static const onBoardingHeader3 = "Free-Pretium \nFinances";
-  static const onBoardingBody3 = "We care about your package as you do";
+      "Accept stablecoin payments hassle-free";
+  static const onBoardingHeader3 = "Pay Bills";
+  static const onBoardingBody3 = "Pay for utility services and earn rewards";
   static const login = "Login";
   static const skip = "Skip";
   static const getStart = "Get started";

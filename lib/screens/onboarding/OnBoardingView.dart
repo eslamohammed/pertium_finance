@@ -183,7 +183,7 @@ class OnboardingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const SizedBox(
           height: AppSize.s40,
@@ -192,6 +192,9 @@ class OnboardingPage extends StatelessWidget {
         Image.asset(
           onboardingSlider.imagePath,
         ),
+        const SizedBox(
+          height: AppSize.s40,
+        ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: AppPadding.p8),
           child: Text(
@@ -199,9 +202,6 @@ class OnboardingPage extends StatelessWidget {
             style:headline1.copyWith(color: ColorManager.primary),
             textAlign: TextAlign.center,
           ),
-        ),
-        const SizedBox(
-          height: AppSize.s60,
         ),
         Padding(
           padding: const EdgeInsets.all(AppPadding.p16),
