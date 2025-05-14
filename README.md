@@ -7,4 +7,5 @@ This project is a **mockup implementation** of the Pretium Finance mobile applic
 - Splash Screen  
 - Login Page  
 - Registration Page  
-- Landing Page Interface  
+- Landing Page Interface
+
