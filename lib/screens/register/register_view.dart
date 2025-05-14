@@ -31,6 +31,15 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+              onPressed: () {
+                Navigator.of(context).pushReplacementNamed(Routes.loginRoute);
+              },
+              icon:  Icon(
+                Icons.arrow_back,
+                color: ColorManager.darkgreen,
+              ),),),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: SingleChildScrollView(
