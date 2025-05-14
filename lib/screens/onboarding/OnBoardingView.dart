@@ -185,21 +185,17 @@ class OnboardingPage extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const SizedBox(
-          height: AppSize.s40,
-        ),
-        
         Image.asset(
           onboardingSlider.imagePath,
         ),
         const SizedBox(
-          height: AppSize.s40,
+          height: AppSize.s30,
         ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: AppPadding.p8),
           child: Text(
             onboardingSlider.header,
-            style:headline1.copyWith(color: ColorManager.primary),
+            style:headline1.copyWith(color: Colors.black),
             textAlign: TextAlign.center,
           ),
         ),
@@ -207,9 +203,12 @@ class OnboardingPage extends StatelessWidget {
           padding: const EdgeInsets.all(AppPadding.p16),
           child: Text(
             onboardingSlider.body,
-            style:bodyText1.copyWith(color: ColorManager.secondary),
+            style:bodyText1.copyWith(color: ColorManager.grey),
             textAlign: TextAlign.center,
           ),
+        ),
+        const SizedBox(
+          height: AppSize.s40,
         ),
       ],
     );
